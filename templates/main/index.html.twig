@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Home{% endblock %}
+
+{% block body %}
+<main class="container">
+    <section class="row">
+        <div class="col-12">
+            <h1>Site _ e-shop</h1>
+            <quote>Welcome in our Shop</quote>
+        </div>
+
+            {% for category in categories %} <!--recuperation par bouclage-->
+                {% if category.parent == null %} <!--sur condition-->
+                    <div class="col-12">
+                        <h2>{{ category.name }}</h2> <!--avec injection du nom de notre categorie-->
+                    </div>
+                {% else %} <!--le cas echeant-->
+                    <div class="col-4 mb-4">
+                        <div class="card h-100" style="width: 25rem;">
+                            <img src="..." class="card-img-top" alt="...">
+                            <div class="card-body">
+                              <h3 class="card-title">{{ category.name }}</h3> <!--injection du nom de notre categorie-->
+                              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                              <a href=" {{ path('categories_list', { name: category.name }) }} " class="btn btn-primary">Let's go...</a>
+                            </div>
+                          </div>
+                    </div>
+                {% endif %}
+            {% endfor %}
+
+        <div class="col-12">
+            {{ dump() }} <!--dump de la base de donnees sous la forme d'un ecran de controle des informations disponibles-->
+        </div>
+
+    </section>
+</main>
+
+{% endblock %}

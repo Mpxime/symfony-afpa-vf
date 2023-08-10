@@ -1,0 +1,15 @@
+<!--test form add-->
+<!--pour le bootstrap voir le fichier twig.yaml, dans le dossier package du dossier config, ou nous ajouterons sous la ligne twig: la ligne form_themes: ['bootstrap_5_layout.html.twig']-->
+
+{{ form_start(productForm) }}
+
+    {{ form_row(productForm.name) }}
+    {{ form_row(productForm.description) }}
+    {{ form_row(productForm.price) }}
+    {{ form_row(productForm.stock) }}
+    {{ form_row(productForm.categories) }}
+    <button type="submit" class="btn btn-primary mb-3">
+        {{ button_label| default('Add product')}}
+    </button>
+
+{{ form_end(productForm) }}
